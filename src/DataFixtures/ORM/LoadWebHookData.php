@@ -16,7 +16,7 @@ class LoadWebHookData extends Fixture
             Event::USER_DELETION(),
             [
                 'http://test.com/awesome',
-                'https://www.en-marche.fr/webhook/endpoint',
+                'https://www.test-test-test.fr/webhook/endpoint',
             ]
         );
         $manager->persist($webHook1);
@@ -26,7 +26,7 @@ class LoadWebHookData extends Fixture
             Event::USER_MODIFICATION(),
             [
                 'http://test.com/awesome',
-                'https://www.en-marche.fr/webhook/endpoint',
+                'https://www.test-test-test.fr/webhook/endpoint',
             ]
         );
         $manager->persist($webHook2);
@@ -35,10 +35,19 @@ class LoadWebHookData extends Fixture
             $this->getReference('web_hook_client_2'),
             Event::USER_MODIFICATION(),
             [
-                'http://client5.com/web_hook',
+                'https://www.test-test-test.fr/webhook/endpoint',
             ]
         );
         $manager->persist($webHook3);
+
+        $webHook4 = new WebHook(
+            $this->getReference('web_hook_client_api'),
+            Event::USER_UPDATE_SUBSCRIPTIONS(),
+            [
+                'https://www.test-test-test.fr/webhook/endpoint',
+            ]
+        );
+        $manager->persist($webHook4);
 
         $manager->flush();
     }

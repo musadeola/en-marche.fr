@@ -179,14 +179,15 @@ class MembershipRequestHandler
 
     public function terminateMembership(UnregistrationCommand $command, Adherent $adherent): void
     {
-        $unregistrationFactory = new UnregistrationFactory();
-        $unregistration = $unregistrationFactory->createFromUnregistrationCommandAndAdherent($command, $adherent);
-
-        $this->adherentRegistry->unregister($adherent, $unregistration);
+//        $unregistrationFactory = new UnregistrationFactory();
+//        $unregistration = $unregistrationFactory->createFromUnregistrationCommandAndAdherent($command, $adherent);
+//
+//        $this->adherentRegistry->unregister($adherent, $unregistration);
 
         $message = AdherentTerminateMembershipMessage::createFromAdherent($adherent);
         $this->mailer->sendMessage($message);
 
         $this->dispatcher->dispatch(UserEvents::USER_DELETED, new UserEvent($adherent));
+        die;
     }
 }
