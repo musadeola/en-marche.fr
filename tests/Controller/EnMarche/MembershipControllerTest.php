@@ -95,7 +95,7 @@ class MembershipControllerTest extends WebTestCase
         $this->assertNull($adherent->getPosition());
         $this->assertTrue($adherent->hasSubscriptionType(SubscriptionTypeEnum::MOVEMENT_INFORMATION_EMAIL));
         $this->assertTrue($adherent->hasSubscriptionType(SubscriptionTypeEnum::WEEKLY_LETTER_EMAIL));
-        $this->assertTrue($adherent->hasSubscriptionType(SubscriptionTypeEnum::REFERENT_EMAIL));
+        $this->assertTrue($adherent->hasSubscriptionType(SubscriptionTypeEnum::MILITANT_ACTION_SMS));
         $this->assertFalse($adherent->hasSubscribedLocalHostEmails());
         $this->assertFalse($adherent->hasCitizenProjectCreationEmailSubscription());
 
